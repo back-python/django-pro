@@ -36,13 +36,13 @@
             </div>
         </form>
         {% endfor %}
+
         <h2 class="mt-5">Tarefas Completadas</h2>
         {% for tarefa in tarefas_feitas %}
         <form action="{% url 'tarefas:detalhe' tarefa.id %}" method="post">
             {% csrf_token %}
             <div class="input-group mb-3">
                 <input style="text-decoration: line-through" type="text" name="nome" class="form-control" required="required" value="{{ tarefa.nome }}">
-                <input type="hidden" value="checked" name="concluida">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-warning">Marcar como pendente</button>
                 </div>
