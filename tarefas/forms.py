@@ -1,6 +1,5 @@
-from attr import field
 from django.forms import ModelForm
-from webdev.tarefas.models import Tarefa
+from tarefas.models import Tarefa
 
 
 class TarefaNovaForm(ModelForm):

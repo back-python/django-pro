@@ -1,8 +1,8 @@
 from django.urls.base import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from webdev.tarefas.forms import TarefaForm, TarefaNovaForm
-from webdev.tarefas.models import Tarefa
+from tarefas.forms import TarefaForm, TarefaNovaForm
+from tarefas.models import Tarefa
 
 # Create your views here.
 def home(request):
