@@ -13,10 +13,19 @@ def home(request):
             return HttpResponseRedirect(reverse('tarefas:home'))
         else:
             tarefas_pendentes = Tarefa.objects.filter(concluida=False).all()
-            return render(request, 'tarefas/home.html', {'form':form, 'tarefas_pendentes':tarefas_pendentes}, status=400)
+            tarefas_feitas = Tarefa.objects.filter(concluida=True).all()
+
+            context = {
+                'form' : form, 
+                'tarefas_pendentes' : tarefas_pendentes,
+                'tarefas_feitas' : tarefas_feitas,
+            }
+
+            return render(request, 'tarefas/home.html', context, status=400)
     
     tarefas_pendentes = Tarefa.objects.filter(concluida=False).all()
-    return render(request, 'tarefas/home.html', {'tarefas_pendentes':tarefas_pendentes})
+    tarefas_feitas = Tarefa.objects.filter(concluida=True).all()
+    return render(request, 'tarefas/home.html', {'tarefas_pendentes':tarefas_pendentes, 'tarefas_feitas':tarefas_feitas})
 
 def detalhe(request, tarefa_id):
     tarefa = Tarefa.objects.get(id=tarefa_id)
