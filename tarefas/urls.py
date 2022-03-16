@@ -1,4 +1,4 @@
-from webdev.tarefas import views
+from tarefas import views
 from django.urls import path
 
 
