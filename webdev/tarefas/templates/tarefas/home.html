@@ -39,15 +39,25 @@
 
         <h2 class="mt-5">Tarefas Completadas</h2>
         {% for tarefa in tarefas_feitas %}
-        <form action="{% url 'tarefas:detalhe' tarefa.id %}" method="post">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-                <input style="text-decoration: line-through" type="text" name="nome" class="form-control" required="required" value="{{ tarefa.nome }}">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-warning">Marcar como pendente</button>
-                </div>
+        <div class="row">
+            <div class="col-11">
+                <form action="{% url 'tarefas:detalhe' tarefa.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input style="text-decoration: line-through" readonly type="text" name="nome" class="form-control" required="required" value="{{ tarefa.nome }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-warning">Marcar como pendente</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div col="1">
+                <form action="{% url 'tarefas:apagar' tarefa.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger"> Apagar </button>
+                </form>
+            </div>
+        </div>
         {% endfor %}
     </div>
 </body>
